@@ -6,6 +6,7 @@ import {
   Dimensions,
   TouchableWithoutFeedback,
   ImageBackground,
+  TouchableOpacity,
 } from 'react-native';
 import Bird from './components/Bird';
 import Obstacles from './components/Obstacles';
@@ -55,8 +56,6 @@ export default function App() {
     if (!isGameOver && birdBottom < screenHeight) {
       setBirdBottom((birdBottom) => birdBottom + 50);
       console.log('jumped');
-    } else {
-      restart();
     }
   };
 
@@ -133,7 +132,8 @@ export default function App() {
     <TouchableWithoutFeedback onPress={jump}>
       <ImageBackground source={image} style={styles.container}>
         {isGameOver && (
-          <View
+          <TouchableOpacity
+            onPress={() => restart()}
             style={{justifyContent: 'center', alignItems: 'center', zIndex: 1}}>
             <Text
               style={{
@@ -149,7 +149,7 @@ export default function App() {
               }}>
               Restart
             </Text>
-          </View>
+          </TouchableOpacity>
         )}
         <Bird birdBottom={birdBottom} birdLeft={birdLeft} />
         <Obstacles
