@@ -31,7 +31,7 @@ export default function App() {
   const gravity = 3;
   let obstacleWidth = 60;
   let obstacleHeight = 300;
-  let gap = 200;
+  let gap = 150;
   let gameTimerId;
   let obstaclesTimerId;
   let obstaclesTimerIdTwo;
